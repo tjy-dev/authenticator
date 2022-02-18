@@ -12,7 +12,7 @@ struct EditAccountView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Item.id, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
     
@@ -31,12 +31,12 @@ struct EditAccountView: View {
     private
     var id = 0
     
-    init(_ item: CodeItem, isPresented: Binding<Bool>) {
+    init(data: CodeItem, isPresented: Binding<Bool>) {
         _isPresented = isPresented
-        _accountName = State(initialValue: item.title)
-        _accountDesc = State(initialValue: item.desc ?? "")
-        _key = State(initialValue: item.key)
-        id = item.id
+        _accountName = State(initialValue: data.title)
+        _accountDesc = State(initialValue: data.desc ?? "")
+        _key = State(initialValue: data.key)
+        id = data.id
     }
     
     var body: some View {
@@ -47,8 +47,10 @@ struct EditAccountView: View {
                         .frame(alignment: .leading)
                     TextField("Description", text: $accountDesc)
                         .frame(alignment: .leading)
+#if DEBUG
                     TextField("key", text: $key)
                         .frame(alignment: .leading)
+#endif
                 }
                 Section {
                     Button {
@@ -72,6 +74,7 @@ struct EditAccountView: View {
     
     func save() {
         isPresented.toggle()
+        
         let newItem = items[id]
         newItem.timestamp = Date()
         newItem.title = accountName
@@ -89,6 +92,8 @@ struct EditAccountView: View {
     }
     
     func delete() {
+        isPresented.toggle()
+        
         let item = items[id]
         viewContext.delete(item)
         

@@ -21,7 +21,7 @@ extension String {
     
     func generateCode() -> String {
             // sample key = HEEOJL4Z2SCMMMJRDG44RH55LNWYDXPM
-        guard let key = base32Decode(self) else { return "" }
+        guard let key = base32Decode(self.replacingOccurrences(of: " ", with: "")) else { return "" }
         
         let intervalTime = 30
         let date = Date.now
@@ -44,6 +44,24 @@ extension String {
         let top = String(num).suffix(6)
         
         return String(top)
+    }
+    
+    func getKey() -> (String, String, String) {
+        // "otpauth://totp/Amazon%3Ayj_ykt%40icloud.com?secret=F2AMXDUWERMB3OZJBVWHMLDJAS7DMDFDCIP4RAFNBDRFBCMQL74Q&issuer=Amazon"
+        let url = URL(string: "otpauth://totp/Amazon%3Ayj_ykt%40icloud.com?secret=F2AMXDUWERMB3OZJBVWHMLDJAS7DMDFDCIP4RAFNBDRFBCMQL74Q&issuer=Amazon")!
+        
+        var path = url.path
+        path.removeFirst()
+        
+        let issuer = path.split(separator: ":")[0]
+        let name = path.split(separator: ":")[1]
+        
+        print(url.scheme)
+        print(url.query)
+        
+        let key = (url.query?.split(separator: "&")[0].split(separator: "=")[1])!
+        
+        return (String(issuer), String(name), String(key))
     }
     
 }

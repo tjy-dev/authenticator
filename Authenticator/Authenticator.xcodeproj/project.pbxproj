@@ -16,6 +16,8 @@
 		7A6D7EE227BF6F6000103E8C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6D7EE127BF6F6000103E8C /* String.swift */; };
 		7A6D7EE427BF70BC00103E8C /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6D7EE327BF70BC00103E8C /* CodeView.swift */; };
 		7A6D7EE627BF786200103E8C /* CodeViewPlaceHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6D7EE527BF786200103E8C /* CodeViewPlaceHolder.swift */; };
+		7A6D7EE827BFB00500103E8C /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6D7EE727BFB00500103E8C /* QRCode.swift */; };
+		7A6D7EEA27BFB1CD00103E8C /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6D7EE927BFB1CD00103E8C /* QRCodeView.swift */; };
 		7AD0AAAC27BE2D94004A3648 /* AuthenticatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD0AAAB27BE2D94004A3648 /* AuthenticatorApp.swift */; };
 		7AD0AAAE27BE2D94004A3648 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD0AAAD27BE2D94004A3648 /* ContentView.swift */; };
 		7AD0AAB027BE2D95004A3648 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AD0AAAF27BE2D95004A3648 /* Assets.xcassets */; };
@@ -58,6 +60,9 @@
 		7A6D7EE127BF6F6000103E8C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7A6D7EE327BF70BC00103E8C /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		7A6D7EE527BF786200103E8C /* CodeViewPlaceHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewPlaceHolder.swift; sourceTree = "<group>"; };
+		7A6D7EE727BFB00500103E8C /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
+		7A6D7EE927BFB1CD00103E8C /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
+		7A6D7EEB27BFB69F00103E8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7AD0AAA827BE2D94004A3648 /* Authenticator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Authenticator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AD0AAAB27BE2D94004A3648 /* AuthenticatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorApp.swift; sourceTree = "<group>"; };
 		7AD0AAAD27BE2D94004A3648 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -139,8 +144,11 @@
 		7AD0AAAA27BE2D94004A3648 /* Authenticator */ = {
 			isa = PBXGroup;
 			children = (
+				7A6D7EEB27BFB69F00103E8C /* Info.plist */,
 				7AD0AAAB27BE2D94004A3648 /* AuthenticatorApp.swift */,
 				7AD0AAAD27BE2D94004A3648 /* ContentView.swift */,
+				7A6D7EE927BFB1CD00103E8C /* QRCodeView.swift */,
+				7A6D7EE727BFB00500103E8C /* QRCode.swift */,
 				7A6D7EE327BF70BC00103E8C /* CodeView.swift */,
 				7A6D7EE527BF786200103E8C /* CodeViewPlaceHolder.swift */,
 				7A6D7EDF27BF6EF200103E8C /* AccountItem.swift */,
@@ -437,6 +445,8 @@
 				7AD0AAB827BE2D95004A3648 /* Authenticator.xcdatamodeld in Sources */,
 				7A6D7EE427BF70BC00103E8C /* CodeView.swift in Sources */,
 				7A6D7EE227BF6F6000103E8C /* String.swift in Sources */,
+				7A6D7EEA27BFB1CD00103E8C /* QRCodeView.swift in Sources */,
+				7A6D7EE827BFB00500103E8C /* QRCode.swift in Sources */,
 				7A6D7EDC27BF6EA100103E8C /* AddAccountView.swift in Sources */,
 				7A6D7EE627BF786200103E8C /* CodeViewPlaceHolder.swift in Sources */,
 				7AD0AAAE27BE2D94004A3648 /* ContentView.swift in Sources */,
@@ -602,11 +612,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Authenticator/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PA3MD6GF9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Authenticator/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to scan a QR code";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -632,11 +644,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Authenticator/Preview Content\"";
 				DEVELOPMENT_TEAM = 6PA3MD6GF9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Authenticator/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app uses the camera to scan a QR code";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

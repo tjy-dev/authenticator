@@ -21,10 +21,16 @@ struct ContentView: View {
     @State
     var timeLeft: Int = 30
     
+    @State
+    var selectedItem = CodeItem()
+    
     private var placeHolder: [String] = ["・","・","・","・","・","・"]
     
     @State
     var showAddSheet: Bool = false
+    
+    @State
+    var showQRCamera: Bool = false
     
     @State
     var willEdit: Bool = false
@@ -44,10 +50,11 @@ struct ContentView: View {
                     Color(uiColor: .background).edgesIgnoringSafeArea(.all)
                     ScrollView {
                         VStack {
-                            ForEach(items, id: \.self) { item in
-                                if willEdit {
-                                    NavigationLink(isActive: $editViewPresented) {
-                                        EditAccountView(CodeItem(id: Int(item.id), key: item.key!, title: item.title!, desc: item.desc ?? ""), isPresented: $editViewPresented)
+                            if willEdit {
+                                ForEach(items, id: \.self) { item in
+                                    Button {
+                                        selectedItem = CodeItem(id: Int(item.id), key: item.key!, title: item.title!, desc: item.desc ?? "")
+                                        editViewPresented = true
                                     } label: {
                                         VStack {
                                             Spacer()
@@ -56,7 +63,11 @@ struct ContentView: View {
                                                 .frame(width: abs(geo.size.width), height: 140)
                                         }
                                     }
-                                } else {
+                                }.background(
+                                    NavigationLink(destination: EditAccountView(data: selectedItem, isPresented: $editViewPresented),
+                                                   isActive: $editViewPresented) {EmptyView()})
+                            } else {
+                                ForEach(items, id: \.self) { item in
                                     Button {
                                         withAnimation {
                                             copied.toggle()
@@ -73,13 +84,12 @@ struct ContentView: View {
                                                 .frame(width: abs(geo.size.width), height: 140)
                                         }
                                     }
-                                }
+                                }.transition(
+                                    AnyTransition.asymmetric(
+                                        insertion: AnyTransition.slide.combined(with: AnyTransition.opacity),
+                                        removal: AnyTransition.identity
+                                ))
                             }
-                            .transition(
-                                AnyTransition.asymmetric(
-                                    insertion: AnyTransition.slide.combined(with: AnyTransition.opacity),
-                                    removal: AnyTransition.identity
-                            ))
                         }
                         .onReceive(timer) { _ in
                             timeLeft = generateLastTime()
@@ -123,8 +133,11 @@ struct ContentView: View {
                             Button(role: .none, action: { willEdit.toggle() }) {
                                 Label("Edit", systemImage: "pencil")
                             }
+                            Button(role: .none, action: { showQRCamera.toggle() }) {
+                                Label("Scan a QR code", systemImage: "qrcode")
+                            }
                             Button(role: .none, action: { showAddSheet.toggle() }) {
-                                Label("Add account", systemImage: "plus")
+                                Label("Enter a setup key", systemImage: "keyboard")
                             }
                         } label: {
                             Label("", systemImage: "ellipsis")
@@ -133,6 +146,28 @@ struct ContentView: View {
                 }
             }
         }
+        .sheet(isPresented: $showQRCamera, content: {
+            ZStack {
+                QRCodeViewController(onRead: { str in
+                    let list = str.getKey()
+                    addByQR(title: list.0, desc: list.1, key: list.2)
+                })
+                HStack {
+                    VStack {
+                        Spacer().frame(height: 10)
+                        Button {
+                            showQRCamera.toggle()
+                        } label: {
+                            Text("Cancel")
+                                .frame(width: 100, height: 50, alignment: .center)
+                        }
+                        Spacer()
+                    }
+                    Spacer()
+                }
+
+            }
+        })
         .sheet(isPresented: $showAddSheet) {
             AddAccountView(isPresent: $showAddSheet)
         }
@@ -143,6 +178,24 @@ struct ContentView: View {
         let unixTime: TimeInterval = date.timeIntervalSince1970
         let unixTimeInt = Int(unixTime)
         return (30 - unixTimeInt % 30)
+    }
+    
+    func addByQR(title: String, desc: String, key: String) {
+        let newItem = Item(context: viewContext)
+        newItem.timestamp = Date()
+        newItem.title = title
+        newItem.id = Int64(items.count)
+        newItem.desc = desc
+        newItem.key = key
+        
+        do {
+            try viewContext.save()
+        } catch {
+            // Replace this implementation with code to handle the error appropriately.
+            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
     }
 }
 
