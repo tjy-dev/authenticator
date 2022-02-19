@@ -2,11 +2,8 @@
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
-<<<<<<< HEAD
 .DS_Store
 
-=======
->>>>>>> 5a9ff15d4ab7a687b819cc679310f85082ff9d9b
 ## User settings
 xcuserdata/
 
