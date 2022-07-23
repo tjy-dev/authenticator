@@ -54,8 +54,8 @@ extension String {
         let issuer = path.split(separator: ":")[0]
         let name = path.split(separator: ":")[1]
         
-        print(url.scheme)
-        print(url.query)
+        print(url.scheme ?? "nil")
+        print(url.query ?? "nil")
         
         let key = (url.query?.split(separator: "&")[0].split(separator: "=")[1])!
         

@@ -213,7 +213,7 @@
 		87115082264DA156669B0B9FB4670E3E /* UInt16+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UInt16+Extension.swift"; path = "Sources/CryptoSwift/UInt16+Extension.swift"; sourceTree = "<group>"; };
 		8C93D55EF34CD3845D877004DB9951F6 /* Padding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Padding.swift; path = Sources/CryptoSwift/Padding.swift; sourceTree = "<group>"; };
 		8CAD2D46F86487D00486D97466492863 /* HMAC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HMAC.swift; path = Sources/CryptoSwift/HMAC.swift; sourceTree = "<group>"; };
-		901FF3D5D385F931A7407547E220F9C8 /* SwiftBase32 */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftBase32; path = SwiftBase32.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		901FF3D5D385F931A7407547E220F9C8 /* SwiftBase32.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftBase32.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9097BD6551F38C82DD9AA6A57F3B164F /* HMAC+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "HMAC+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/HMAC+Foundation.swift"; sourceTree = "<group>"; };
 		921D4CCA3CE3D0951CA0F38E2B27354A /* Base16.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Base16.swift; path = Sources/Base32/Base16.swift; sourceTree = "<group>"; };
 		9285A522611165603522A4907AFB3A58 /* PKCS7.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKCS7.swift; path = Sources/CryptoSwift/PKCS/PKCS7.swift; sourceTree = "<group>"; };
@@ -268,7 +268,7 @@
 		ED516BFB33393141AB9CFDF5D04BECC0 /* SwiftBase32.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftBase32.release.xcconfig; sourceTree = "<group>"; };
 		EFB4985E92BCA0A1E8B26C9DC4D1FE42 /* PKCS7Padding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PKCS7Padding.swift; path = Sources/CryptoSwift/PKCS/PKCS7Padding.swift; sourceTree = "<group>"; };
 		F041B7D389CAECC32828C0F2107DC924 /* SHA3.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SHA3.swift; path = Sources/CryptoSwift/SHA3.swift; sourceTree = "<group>"; };
-		F81274EDB681F11E7CB05F7DCA2BB33C /* CryptoSwift */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CryptoSwift; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F81274EDB681F11E7CB05F7DCA2BB33C /* CryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9D511DE986E9DBE369DF101A021D434 /* StreamDecryptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StreamDecryptor.swift; path = Sources/CryptoSwift/StreamDecryptor.swift; sourceTree = "<group>"; };
 		FA817DFDA2F634790E1FCBD9B5D23C81 /* Pods-Authenticator-AuthenticatorUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Authenticator-AuthenticatorUITests-Info.plist"; sourceTree = "<group>"; };
 		FD369D12D939C22906E588DE6023D8BE /* Pods-Authenticator-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Authenticator-dummy.m"; sourceTree = "<group>"; };
@@ -337,11 +337,11 @@
 		276902D356F5850F305B6601B778EEBE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F81274EDB681F11E7CB05F7DCA2BB33C /* CryptoSwift */,
+				F81274EDB681F11E7CB05F7DCA2BB33C /* CryptoSwift.framework */,
 				50F81942B51A2D5CCB4F7536BBAE3D9E /* Pods-Authenticator */,
 				63553DAD21F03201CC5C245BBCABAF3C /* Pods-Authenticator-AuthenticatorUITests */,
 				DB0FE5ECADA741B9419DFAD1BED0CCE9 /* Pods-AuthenticatorTests */,
-				901FF3D5D385F931A7407547E220F9C8 /* SwiftBase32 */,
+				901FF3D5D385F931A7407547E220F9C8 /* SwiftBase32.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -614,7 +614,7 @@
 			);
 			name = CryptoSwift;
 			productName = CryptoSwift;
-			productReference = F81274EDB681F11E7CB05F7DCA2BB33C /* CryptoSwift */;
+			productReference = F81274EDB681F11E7CB05F7DCA2BB33C /* CryptoSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B4078608617FF75C4919361D555F41A5 /* Pods-AuthenticatorTests */ = {
@@ -691,7 +691,7 @@
 			);
 			name = SwiftBase32;
 			productName = SwiftBase32;
-			productReference = 901FF3D5D385F931A7407547E220F9C8 /* SwiftBase32 */;
+			productReference = 901FF3D5D385F931A7407547E220F9C8 /* SwiftBase32.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -701,7 +701,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1340;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 13.0";
@@ -973,7 +973,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftBase32/SwiftBase32-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftBase32/SwiftBase32-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1046,7 +1046,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/CryptoSwift/CryptoSwift-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/CryptoSwift/CryptoSwift-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1358,7 +1358,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/CryptoSwift/CryptoSwift-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/CryptoSwift/CryptoSwift-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1393,7 +1393,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftBase32/SwiftBase32-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftBase32/SwiftBase32-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
